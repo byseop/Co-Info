@@ -1,0 +1,25 @@
+.type .type_list {
+    width: 25%;
+    display: inline-block;
+    line-height: 40px;
+}
+.type .type_list.on {
+    border-bottom: 3px solid blue;
+}
+.type .type_list.on h3 {
+    color: blue;
+    font-weight: 500;
+    opacity: 1;
+}
+.type h3 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #222;
+    margin: 0;
+    text-align: center;
+    cursor: pointer;
+}
+.type h3:hover {
+    color: blue;
+    opacity: 0.5;
+}

@@ -1,0 +1,17 @@
+.CoInfo {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.CoInfo .inner {
+    font-size: 0;
+}
+.Chart {
+    display: inline-block;
+    width: 700px;
+    box-sizing: border-box;
+}
+.List {
+    display: inline-block;
+    width: 500px;
+    box-sizing: border-box;
+}
