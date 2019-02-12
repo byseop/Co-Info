@@ -1,0 +1,18 @@
+.coin_list_inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-row-gap: 20px;
+    margin-top: 30px;
+}
+.coin_list_inner > div {
+    font-size: 16px;
+}
+.coin_list_inner .korean_name {
+    color: #222;
+    font-weight: 500;
+}
+.coin_list_inner .market_name {
+    font-size: 10px;
+    color: #777;
+    line-height: 100%;
+}

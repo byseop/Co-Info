@@ -3,15 +3,16 @@ import CoinList from './CoinList';
 import './CoinListContainer.css';
 import { inject, observer } from 'mobx-react';
 
-const CoinListContainer = ({ marketCode }) => {
+const CoinListContainer = ({ selectedMarketCode, currentPrice }) => {
   return (
     <>
-      <div >여기에 타이틀들어감</div>
-      <CoinList marketCode={marketCode} />
+      <div className="title">실시간 시세</div>
+      <CoinList selectedMarketCode={selectedMarketCode} currentPrice={currentPrice} />
     </>
   );
 };
 
 export default inject(({ marketStore }) => ({
-  marketCode: marketStore.marketCode
+  selectedMarketCode: marketStore.selectedMarketCode,
+  currentPrice: marketStore.currentPrice
 }))(observer(CoinListContainer));
