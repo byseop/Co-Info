@@ -16,3 +16,9 @@
     color: #777;
     line-height: 100%;
 }
+.coin_list_inner .tick_price {
+    vertical-align: middle;
+}
+.coin_list_inner .tick {
+    text-align: right;
+}

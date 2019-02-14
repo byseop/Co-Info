@@ -61,7 +61,7 @@ export default class marketStore {
   @observable selectedMarket = 'KRW'; // KRW, BTC, ETH, USDT
   @observable selectedMarketCode = [];
   @observable callTickerLink = 'https://api.upbit.com/v1/ticker?markets=';
-  @action marketSelect = (code) => {
+  @action marketSelect = code => {
     if (code === 'KRW') {
       this.selectedMarket = 'KRW'
       this.selectedMarketCode = this.krwMarket;
@@ -91,12 +91,15 @@ export default class marketStore {
 
   @observable currentPrice = [];
   @observable isLoadCurrentPrice = 'pending';
+  @observable tickPrice = [];
   callCurrentPrice = flow(function*() {
+    this.currentPrice = [];
     this.isLoadCurrentPrice = 'pending';
     try {
       const response = yield axios(this.callTickerLink);
       const data = yield response.data;
       this.currentPrice = data;
+      this.tickPrice = this.currentPrice;
       this.isLoadCurrentPrice = 'done';
     } catch (error) {
       console.log(error);
