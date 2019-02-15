@@ -10,7 +10,7 @@ class CoinListContainer extends Component {
   componentDidMount() {
     const { refreshingCurrentPrice } = this.props.marketStore;
     setInterval(function() {
-      // refreshingCurrentPrice(); // 실시간시세 업데이트
+      refreshingCurrentPrice(); // 실시간시세 업데이트
     }, 200)
   }
   render() {

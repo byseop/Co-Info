@@ -22,3 +22,15 @@
 .coin_list_inner .tick {
     text-align: right;
 }
+.coin_list_inner .change {
+    text-align: right;
+}
+.coin_list_inner .change_price {
+    vertical-align: middle;
+}
+.coin_list_inner .change_price.RISE {
+    color: #f75467;
+}
+.coin_list_inner .change_price.FALL {
+    color: #4386f9;
+}
