@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 
 export default class CurrnetPrice extends Component {
+  beforePrice;
   shouldComponentUpdate(nextProps, nextState) {
     const { price } = this.props;
-    // console.log(price)
-    // console.log(nextProps.price)
+    // console.log('현재값: '+price)
+    // console.log('비교값: '+nextProps.price)
     if (nextProps.price === price) {
+      this.beforePrice = price;
       return false;
     } else {
       return true;
     }
   }
   render() {
-    const { price } = this.props;
-    console.log(price);
-    console.log('refresh!')
+    const { price, market } = this.props;
+    console.log(`Refreshing ${market} price, ${this.beforePrice} -> ${price}`);
     return <span className="tick_price">{price}</span>
   }
 }

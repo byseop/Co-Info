@@ -89,6 +89,7 @@ export default class marketStore {
     this.callCurrentPrice();
   }
 
+  // 실시간 가격 정보
   @observable currentPrice = [];
   @observable isLoadCurrentPrice = 'pending';
   @observable tickPrice = [];
@@ -107,4 +108,11 @@ export default class marketStore {
     }
   });
   callCurrentPrice = this.callCurrentPrice.bind(this);
+
+  // 실시간 업데이트
+  @action refreshingCurrentPrice = () => {
+    if (this.isLoadCurrentPrice === 'done') {
+      this.callCurrentPrice();
+    }
+  }
 }
