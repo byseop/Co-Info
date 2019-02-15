@@ -92,8 +92,9 @@ export default class marketStore {
   // 실시간 가격 정보
   @observable currentPrice = [];
   @observable isLoadCurrentPrice = 'pending';
-  @observable tickPrice = [];
+  tickPrice = [];
   callCurrentPrice = flow(function*() {
+    this.tickPrice = [];
     this.currentPrice = [];
     this.isLoadCurrentPrice = 'pending';
     try {

@@ -3,7 +3,7 @@
 }
 .coin_list_inner .c_list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr 2fr;
     grid-row-gap: 20px;
     padding: 15px;
     border-radius: 4px;

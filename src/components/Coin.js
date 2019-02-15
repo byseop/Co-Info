@@ -2,54 +2,42 @@ import React, { Component } from 'react'
 import CurrentPrice from './CurrnetPrice';
 
 export default class Coin extends Component {
-  tick;
+  tick = 0;
   change;
   changePrice;
   changeRate;
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { market, tickPrice, currentPrice } = this.props;
-    if (prevProps !== currentPrice) {
-      if (currentPrice.length > 0) {
-        const price = tickPrice.find(info => (
+    
+    if (prevProps.currentPrice !== currentPrice && prevProps.tickPrice !== tickPrice && currentPrice.length === tickPrice.length) {
+      // console.log(prevProps.currentPrice)
+      if (currentPrice.length > 0 && tickPrice.length > 0 && currentPrice === tickPrice) {
+        const coinInfoArr = tickPrice.find(info => (
           info.market === market
-        )).trade_price;
-        const changeMark = tickPrice.find(info => (
-          info.market === market
-        )).change;
-        const cPrice = tickPrice.find(info => (
-          info.market === market
-        )).change_price;
-        const cRate = tickPrice.find(info => (
-          info.market === market
-        )).change_rate;
-        // console.log(price);
-        if (price > 1) {
-          this.tick = price.toLocaleString();
-          if (changeMark === 'RISE' || changeMark === 'EVEN') {
-            this.changePrice = '+'+cPrice.toLocaleString();
-          } else if (changeMark === 'FALL') {
-            this.changePrice = -cPrice.toLocaleString();
+        ));
+        // console.log(coinInfoArr);
+        if (coinInfoArr !== undefined) {
+          const { trade_price, change, change_price, change_rate } = coinInfoArr;
+          if (trade_price > 1) {
+            this.tick = trade_price.toLocaleString();
+          } else {
+            this.tick = trade_price.toFixed(4);
           }
-        } else {
-          this.tick = price;
-          if (changeMark === 'RISE' || changeMark === 'EVEN') {
-            this.changePrice = '+'+cPrice;
-          } else if (changeMark === 'FALL') {
-            this.changePrice = -cPrice;
+          if (change === 'RISE' || change === 'EVEN') {
+            this.changePrice = '+'+change_price;
+            this.changeRate = '+'+(change_rate*100).toFixed(2)
+          } else if (change === 'FALL') {
+            this.changePrice = -change_price;
+            this.changeRate = -(change_rate*100).toFixed(2)
           }
+          this.change = change;
         }
-        if (cRate > 0) {
-          this.changeRate = '+'+(cRate*100).toFixed(2)
-        } else {
-          this.changeRate = -(cRate*100).toFixed(2)
-        }
-        this.change = changeMark;
       } else {
         this.tick = this.tick;
         this.change = this.change
         this.changePrice = this.changePrice;
       }
-    }
+    } 
   }
   render() {
     const { korean_name, market } = this.props;

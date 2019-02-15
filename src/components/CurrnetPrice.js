@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export default class CurrnetPrice extends Component {
-  beforePrice;
+  beforePrice = 0;
   shouldComponentUpdate(nextProps, nextState) {
     const { price } = this.props;
     // console.log('현재값: '+price)

@@ -3,7 +3,7 @@ import Coin from './Coin';
 
 const CoinList = ({ selectedMarketCode, tickPrice, currentPrice, refreshingCurrentPrice }) => {
   const list = selectedMarketCode.map(coin => {
-    return <Coin key={coin.english_name} {...coin} tickPrice={tickPrice} currentPrice={currentPrice} refreshingCurrentPrice={refreshingCurrentPrice} />
+    return <Coin key={coin.english_name} {...coin} tickPrice={tickPrice} currentPrice={currentPrice} />
   })
   
   return (

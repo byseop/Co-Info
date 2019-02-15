@@ -11,14 +11,16 @@ class CoinListContainer extends Component {
     const { refreshingCurrentPrice } = this.props.marketStore;
     setInterval(function() {
       refreshingCurrentPrice(); // 실시간시세 업데이트
-    }, 200)
+    }, 400)
+  }
+  renderCoinList = ({ selectedMarketCode, currentPrice, tickPrice } = this.props.marketStore) => {
+    return <CoinList selectedMarketCode={selectedMarketCode} currentPrice={currentPrice} tickPrice={tickPrice} />
   }
   render() {
-    const { selectedMarketCode, currentPrice, tickPrice } = this.props.marketStore;
     return (
       <>
         <div className="title">실시간 시세</div>
-        <CoinList selectedMarketCode={selectedMarketCode} currentPrice={currentPrice} tickPrice={tickPrice}  />
+        {this.renderCoinList()}
       </>
     )
   }
