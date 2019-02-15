@@ -1,8 +1,19 @@
 .coin_list_inner {
+    margin-top: 30px;
+}
+.coin_list_inner .c_list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-row-gap: 20px;
-    margin-top: 30px;
+    padding: 15px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+.coin_list_inner .c_list:hover {
+    background: #f1f1f1;
 }
 .coin_list_inner > div {
     font-size: 16px;

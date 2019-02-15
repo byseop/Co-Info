@@ -54,7 +54,7 @@ export default class Coin extends Component {
   render() {
     const { korean_name, market } = this.props;
     return (
-      <>
+      <div className="c_list">
         <div>
           <div className="korean_name">{korean_name}</div>
           <div className="market_name">{market}</div>
@@ -69,7 +69,7 @@ export default class Coin extends Component {
             `}
           </span>
         </div>
-      </>
+      </div>
     )
   }
 }
