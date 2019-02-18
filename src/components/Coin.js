@@ -40,14 +40,17 @@ export default class Coin extends Component {
             this.changePrice = -change_price;
             this.changeRate = -(change_rate * 100).toFixed(2);
           }
-          this.change = change;
           if (prevProps.tickPrice.length > 0) {
-            const prevCoinPrice = prevProps.tickPrice.find(info => info.market === market).trade_price;
-            if (trade_price !== prevCoinPrice) {
-              this.isChange = true;
+            // const prevCoinPrice = prevProps.tickPrice.find(info => info.market === market).trade_price;
+            const prevCoinPrice = prevProps.tickPrice.find(info => info.market === market);
+            if (prevCoinPrice !== undefined) {
+              if (trade_price !== prevCoinPrice.trade_price) {
+                this.isChange = true;
+              }
+              else this.isChange = false;
             }
-            else this.isChange = false;
           }
+          this.change = change;
         }
       } else {
         this.tick = this.tick;

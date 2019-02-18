@@ -1,4 +1,4 @@
-import { observable, flow, configure, action, reaction } from 'mobx';
+import { observable, flow, configure, action } from 'mobx';
 import axios from 'axios';
 import { MARKET_CODE_URL } from './API_QUERY';
 
