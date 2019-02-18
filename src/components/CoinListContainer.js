@@ -13,8 +13,8 @@ class CoinListContainer extends Component {
       refreshingCurrentPrice(); // 실시간시세 업데이트
     }, 400)
   }
-  renderCoinList = ({ selectedMarketCode, currentPrice, tickPrice } = this.props.marketStore) => {
-    return <CoinList selectedMarketCode={selectedMarketCode} currentPrice={currentPrice} tickPrice={tickPrice} />
+  renderCoinList = ({ selectedMarketCode, currentPrice, tickPrice, changingChart } = this.props.marketStore) => {
+    return <CoinList selectedMarketCode={selectedMarketCode} currentPrice={currentPrice} tickPrice={tickPrice} changingChart={changingChart} />
   }
   render() {
     return (

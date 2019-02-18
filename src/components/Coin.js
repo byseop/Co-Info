@@ -6,7 +6,7 @@ export default class Coin extends Component {
   change;
   changePrice;
   changeRate;
-  isChange = false; // 이걸로 수정해야됨
+  isChange = false;
   componentDidUpdate(prevProps, prevState, snapshot) {
     const { market, tickPrice, currentPrice } = this.props;
 
@@ -56,10 +56,14 @@ export default class Coin extends Component {
       }
     }
   }
+  handleClick = () => {
+    const { changingChart, market } = this.props;
+    changingChart(market);
+  }
   render() {
     const { korean_name, market } = this.props;
     return (
-      <div className="c_list">
+      <div className="c_list" onClick={this.handleClick}>
         <div>
           <div className="korean_name">{korean_name}</div>
           <div className="market_name">{market}</div>

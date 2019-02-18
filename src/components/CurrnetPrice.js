@@ -18,7 +18,7 @@ export default class CurrnetPrice extends Component {
   }
   render() {
     const { price, market } = this.props;
-    console.log(`Refreshing ${market} price, ${this.beforePrice} -> ${price}`);
+    console.log(`UPDATE: ${market} price, ${this.beforePrice} -> ${price}`);
     return <span className="tick_price">{price}</span>
   }
 }

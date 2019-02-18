@@ -11,6 +11,7 @@
     -moz-border-radius: 4px;
     -ms-border-radius: 4px;
     -o-border-radius: 4px;
+    cursor: pointer;
 }
 .coin_list_inner .c_list:hover {
     background: #f1f1f1;

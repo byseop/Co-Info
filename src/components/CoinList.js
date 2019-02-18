@@ -1,9 +1,9 @@
 import React from 'react';
 import Coin from './Coin';
 
-const CoinList = ({ selectedMarketCode, tickPrice, currentPrice, refreshingCurrentPrice }) => {
+const CoinList = ({ selectedMarketCode, tickPrice, currentPrice, changingChart }) => {
   const list = selectedMarketCode.map(coin => {
-    return <Coin key={coin.english_name} {...coin} tickPrice={tickPrice} currentPrice={currentPrice} />
+    return <Coin key={coin.english_name} {...coin} tickPrice={tickPrice} currentPrice={currentPrice} changingChart={changingChart} />
   })
   
   return (

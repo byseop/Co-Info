@@ -1,4 +1,4 @@
-import { observable, flow, configure, action } from 'mobx';
+import { observable, flow, configure, action, reaction } from 'mobx';
 import axios from 'axios';
 import { MARKET_CODE_URL } from './API_QUERY';
 
@@ -115,5 +115,39 @@ export default class marketStore {
     if (this.isLoadCurrentPrice === 'done') {
       this.callCurrentPrice();
     }
+  }
+  @action refreshingCandles = () => {
+    if (this.isLoadedCandles === 'done') {
+      this.getCandles();
+    }
+  }
+
+  @observable candles = [];
+  showedCandles = [];
+  @observable isLoadedCandles = 'pending';
+  @observable candleMin = 1;
+  @observable candleMarket = 'KRW-BTC';
+  @observable candleCount = '200';
+  @action candleLink = () => {
+    return `https://api.upbit.com/v1/candles/minutes/${this.candleMin}?market=${this.candleMarket}&count=${this.candleCount}`
+  } 
+  getCandles = flow(function*() {
+    // this.candles = [];
+    this.isLoadedCandles = 'pending';
+    try {
+      const response = yield axios(this.candleLink());
+      const data = yield response.data;
+      this.candles = data;
+      this.showedCandles = this.candles;
+      this.isLoadedCandles = 'done';
+    } catch (error) {
+      console.log(error);
+      this.isLoadedCandles = 'error';
+    }
+  });
+  getCandles = this.getCandles.bind(this);
+
+  @action changingChart = (market) => {
+    this.candleMarket = market;
   }
 }

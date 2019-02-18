@@ -12,8 +12,8 @@ class CoInfoContainer extends Component {
   }
 
   render() {
-    const { list } = this.props;
-    return <CoInfo chart={null} list={list} />;
+    const { list, chart } = this.props;
+    return <CoInfo chart={chart} list={list} />;
   }
 }
 
