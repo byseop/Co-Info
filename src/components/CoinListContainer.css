@@ -29,9 +29,13 @@
 }
 .coin_list_inner .tick_price {
     vertical-align: middle;
+    box-sizing: border-box;
 }
 .coin_list_inner .tick {
     text-align: right;
+}
+.coin_list_inner .tick.changed .tick_price {
+    border: 1px solid #333;
 }
 .coin_list_inner .change {
     text-align: right;

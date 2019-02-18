@@ -94,7 +94,7 @@ export default class marketStore {
   @observable isLoadCurrentPrice = 'pending';
   tickPrice = [];
   callCurrentPrice = flow(function*() {
-    this.tickPrice = [];
+    // this.tickPrice = [];
     this.currentPrice = [];
     this.isLoadCurrentPrice = 'pending';
     try {

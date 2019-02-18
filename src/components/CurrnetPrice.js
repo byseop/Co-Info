@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 export default class CurrnetPrice extends Component {
   beforePrice = 0;
+  changeStyle={
+    'border': '1px solid #000'
+  };
   shouldComponentUpdate(nextProps, nextState) {
     const { price } = this.props;
     // console.log('현재값: '+price)
