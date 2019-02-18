@@ -4,7 +4,7 @@ export const drawingChart = (data) => {
     volume = [],
     dataLength = data.length,
     i = 0;
-
+    
   for (i; i < dataLength; i += 1) {
     ohlc.push([
       new Date(data[i].candle_date_time_kst).getTime(), // the date
@@ -79,14 +79,14 @@ export const drawingChart = (data) => {
     series: [
       {
         type: 'ohlc',
-        id: 'krw-btc',
-        name: 'KRW-BTC',
+        id: data[0].market,
+        name: data[0].market,
         data: ohlc
       },
       {
         type: 'column',
-        id: 'aapl-volume',
-        name: 'BTC Volume',
+        id: 'volume',
+        name: 'Volume',
         data: volume,
         yAxis: 1
       }
