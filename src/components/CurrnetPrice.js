@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 export default class CurrnetPrice extends Component {
   beforePrice = 0;
-  changeStyle={
-    'border': '1px solid #000'
+  changeStyle = {
+    border: '1px solid #000'
   };
   shouldComponentUpdate(nextProps, nextState) {
     const { price } = this.props;
@@ -19,6 +19,6 @@ export default class CurrnetPrice extends Component {
   render() {
     const { price, market } = this.props;
     console.log(`UPDATE: ${market} price, ${this.beforePrice} -> ${price}`);
-    return <span className="tick_price">{price}</span>
+    return <span className="tick_price">{price}</span>;
   }
 }

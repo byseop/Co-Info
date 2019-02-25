@@ -42,12 +42,13 @@ export default class Coin extends Component {
           }
           if (prevProps.tickPrice.length > 0) {
             // const prevCoinPrice = prevProps.tickPrice.find(info => info.market === market).trade_price;
-            const prevCoinPrice = prevProps.tickPrice.find(info => info.market === market);
+            const prevCoinPrice = prevProps.tickPrice.find(
+              info => info.market === market
+            );
             if (prevCoinPrice !== undefined) {
               if (trade_price !== prevCoinPrice.trade_price) {
                 this.isChange = true;
-              }
-              else this.isChange = false;
+              } else this.isChange = false;
             }
           }
           this.change = change;
@@ -62,7 +63,7 @@ export default class Coin extends Component {
   handleClick = () => {
     const { changingChart, market } = this.props;
     changingChart(market);
-  }
+  };
   render() {
     const { korean_name, market } = this.props;
     return (
@@ -75,9 +76,7 @@ export default class Coin extends Component {
           <CurrentPrice price={this.tick} market={market} />
         </div>
         <div className="change">
-          <span
-            className={`change_price ${this.change}`}
-          >
+          <span className={`change_price ${this.change}`}>
             {this.changePrice} ({this.changeRate}%)
             {`
               ${this.change === 'RISE' ? '▲' : ''}

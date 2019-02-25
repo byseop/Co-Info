@@ -6,7 +6,9 @@ import './App.css';
 
 class App extends Component {
   render() {
-    return <CoInfoContainer chart={<ChartContainer />} list={<ListContainer />} />;
+    return (
+      <CoInfoContainer chart={<ChartContainer />} list={<ListContainer />} />
+    );
   }
 }
 

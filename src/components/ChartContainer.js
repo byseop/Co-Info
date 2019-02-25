@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import  { inject, observer } from 'mobx-react'
+import React, { Component } from 'react';
+import { inject, observer } from 'mobx-react';
 import Chart from './Charts';
-import './ChartContainer.css'
+import './ChartContainer.css';
 
 @inject('marketStore')
 @observer
@@ -18,10 +18,10 @@ class ChartContainer extends Component {
     const { candles } = this.props.marketStore;
     const renderChart = () => {
       if (candles.length > 0) {
-        return this.showedCandles = candles;
+        return (this.showedCandles = candles);
       }
-    }
-    return <Chart candles={renderChart()} />
+    };
+    return <Chart candles={renderChart()} />;
   }
 }
 

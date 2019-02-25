@@ -9,5 +9,5 @@ const ListConatiner = ({ selectedMarket, marketSelect }) => {
 
 export default inject(({ marketStore }) => ({
   selectedMarket: marketStore.selectedMarket,
-  marketSelect: marketStore.marketSelect,
+  marketSelect: marketStore.marketSelect
 }))(observer(ListConatiner));

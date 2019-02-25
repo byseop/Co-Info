@@ -1,10 +1,10 @@
-export const drawingChart = (data) => {
+export const drawingChart = data => {
   // split the data set into ohlc and volume
   var ohlc = [],
     volume = [],
     dataLength = data.length,
     i = 0;
-    
+
   for (i; i < dataLength; i += 1) {
     ohlc.push([
       new Date(data[i].candle_date_time_kst).getTime(), // the date
@@ -106,4 +106,4 @@ export const drawingChart = (data) => {
       ]
     }
   });
-}
+};

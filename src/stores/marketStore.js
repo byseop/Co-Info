@@ -15,7 +15,7 @@ export default class marketStore {
   @observable btcMarket = [];
   @observable ethMarket = [];
   @observable usdtMarket = [];
-  
+
   getMarketCode = flow(function*() {
     try {
       const response = yield axios.get(MARKET_CODE_URL);
@@ -23,39 +23,38 @@ export default class marketStore {
       this.classify(data);
       yield this.marketSelect('KRW');
       this.isLoadedMarketCode = 'done';
-    }
-    catch (error) {
+    } catch (error) {
       this.isLoadedMarketCode = 'error';
     }
   });
   getMarketCode = this.getMarketCode.bind(this);
 
   @action classifyKrw = allMarket => {
-    this.krwMarket = allMarket.filter(list => (
-      list.market.split('-')[0] === 'KRW'
-    ));
-  }
+    this.krwMarket = allMarket.filter(
+      list => list.market.split('-')[0] === 'KRW'
+    );
+  };
   @action classifyBtc = allMarket => {
-    this.btcMarket = allMarket.filter(list => (
-      list.market.split('-')[0] === 'BTC'
-    ));
-  }
+    this.btcMarket = allMarket.filter(
+      list => list.market.split('-')[0] === 'BTC'
+    );
+  };
   @action classifyEth = allMarket => {
-    this.ethMarket = allMarket.filter(list => (
-      list.market.split('-')[0] === 'ETH'
-    ));
-  }
+    this.ethMarket = allMarket.filter(
+      list => list.market.split('-')[0] === 'ETH'
+    );
+  };
   @action classifyUsdt = allMarket => {
-    this.usdtMarket = allMarket.filter(list => (
-      list.market.split('-')[0] === 'USDT'
-    ));
-  }
+    this.usdtMarket = allMarket.filter(
+      list => list.market.split('-')[0] === 'USDT'
+    );
+  };
   classify = allMarket => {
     this.classifyKrw(allMarket);
     this.classifyBtc(allMarket);
     this.classifyEth(allMarket);
     this.classifyUsdt(allMarket);
-  }
+  };
 
   // 마켓 탭
   @observable selectedMarket = 'KRW'; // KRW, BTC, ETH, USDT
@@ -63,31 +62,32 @@ export default class marketStore {
   @observable callTickerLink = 'https://api.upbit.com/v1/ticker?markets=';
   @action marketSelect = code => {
     if (code === 'KRW') {
-      this.selectedMarket = 'KRW'
+      this.selectedMarket = 'KRW';
       this.selectedMarketCode = this.krwMarket;
-    }
-    else if (code === 'BTC') {
-      this.selectedMarket = 'BTC'
+    } else if (code === 'BTC') {
+      this.selectedMarket = 'BTC';
       this.selectedMarketCode = this.btcMarket;
-    }
-    else if (code === 'ETH') {
-      this.selectedMarket = 'ETH'
+    } else if (code === 'ETH') {
+      this.selectedMarket = 'ETH';
       this.selectedMarketCode = this.ethMarket;
-    }
-    else if (code === 'USDT') {
-      this.selectedMarket = 'USDT'
+    } else if (code === 'USDT') {
+      this.selectedMarket = 'USDT';
       this.selectedMarketCode = this.usdtMarket;
     }
 
     this.callTickerLink = 'https://api.upbit.com/v1/ticker?markets=';
 
     for (let i = 0; i < this.selectedMarketCode.length; i++) {
-      this.callTickerLink = this.callTickerLink + this.selectedMarketCode[i].market + ',';
+      this.callTickerLink =
+        this.callTickerLink + this.selectedMarketCode[i].market + ',';
     }
 
-    this.callTickerLink = this.callTickerLink.substr(0, this.callTickerLink.length-1);
+    this.callTickerLink = this.callTickerLink.substr(
+      0,
+      this.callTickerLink.length - 1
+    );
     this.callCurrentPrice();
-  }
+  };
 
   // 실시간 가격 정보
   @observable currentPrice = [];
@@ -115,12 +115,12 @@ export default class marketStore {
     if (this.isLoadCurrentPrice === 'done') {
       this.callCurrentPrice();
     }
-  }
+  };
   @action refreshingCandles = () => {
     if (this.isLoadedCandles === 'done') {
       this.getCandles();
     }
-  }
+  };
 
   @observable candles = [];
   showedCandles = [];
@@ -129,8 +129,10 @@ export default class marketStore {
   @observable candleMarket = 'KRW-BTC';
   @observable candleCount = '200';
   @action candleLink = () => {
-    return `https://api.upbit.com/v1/candles/minutes/${this.candleMin}?market=${this.candleMarket}&count=${this.candleCount}`
-  } 
+    return `https://api.upbit.com/v1/candles/minutes/${this.candleMin}?market=${
+      this.candleMarket
+    }&count=${this.candleCount}`;
+  };
   getCandles = flow(function*() {
     // this.candles = [];
     this.isLoadedCandles = 'pending';
@@ -147,7 +149,7 @@ export default class marketStore {
   });
   getCandles = this.getCandles.bind(this);
 
-  @action changingChart = (market) => {
+  @action changingChart = market => {
     this.candleMarket = market;
-  }
+  };
 }

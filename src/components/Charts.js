@@ -11,7 +11,7 @@ export default class Charts extends Component {
         if (nextPrice !== currentPrice) {
           // console.log(nextPrice, currentPrice);
           // console.log(candles)
-          console.log('UPDATE: Chart changing observed and Update')
+          console.log('UPDATE: Chart changing observed and Update');
           return true;
         } else {
           return false;
